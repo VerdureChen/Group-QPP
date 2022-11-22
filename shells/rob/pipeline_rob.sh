@@ -38,39 +38,39 @@ MODEL_NAME=cobert
 TRAIN_RANK_NUM=100
 BATCH=64
 #model_type:vanilla or cobert
-#CUDA_VISIBLE_DEVICES=1 python ../../code/cross_validation_train.py --data_dir $CORPUS_DIR \
-#                                               --data_name $DATANAME \
-#                                               --encoder_model $ENCODER_MODEL_DIR \
-#                                               --groupwise_model $GROUPWISE_MODEL_DIR \
-#                                               --attn_model $ATTN_MODEL_DIR \
-#                                               --task_name robust \
-#                                               --trec_eval_path $TREC_EVAL_PATH \
-#                                               --output_dir $OUTPUT_DIR \
-#                                               --outdir_name $TRAIN_OUTPUT_NAME \
-#                                               --ref_file $REF_FILE \
-#                                               --ql_ranking_file $RANK_FILE \
-#                                               --model_name $MODEL_NAME \
-#                                               --max_seq_length 256 \
-#                                               --fold 30 \
-#                                               --label_num 2 \
-#                                               --metric map \
-#                                               --qid_split_dir $QID_SPLIT_DIR \
-#                                               --qid_file $QID_FILE_DIR \
-#                                               --do_train \
-#                                               --fp16 \
-#                                               --do_lower_case \
-#                                               --train_batch_size $BATCH \
-#                                               --seed 42 \
-#                                               --eval_step 50 \
-#                                               --save_step 50000 \
-#                                               --label_type $LABEL_TYPE \
-#                                               --rank_num $TRAIN_RANK_NUM \
-#                                               --learning_rate 1e-5 \
-#                                               --num_train_epochs 2.0 \
-#                                               --random \
-#                                               --pos \
-#                                               --qpp_methods ISD \
-#                                               --data_seed 96\ >../../logs/train/rob/cobert_noattn_100.out 2>&1 &
+CUDA_VISIBLE_DEVICES=1 python ../../code/cross_validation_train.py --data_dir $CORPUS_DIR \
+                                               --data_name $DATANAME \
+                                               --encoder_model $ENCODER_MODEL_DIR \
+                                               --groupwise_model $GROUPWISE_MODEL_DIR \
+                                               --attn_model $ATTN_MODEL_DIR \
+                                               --task_name robust \
+                                               --trec_eval_path $TREC_EVAL_PATH \
+                                               --output_dir $OUTPUT_DIR \
+                                               --outdir_name $TRAIN_OUTPUT_NAME \
+                                               --ref_file $REF_FILE \
+                                               --ql_ranking_file $RANK_FILE \
+                                               --model_name $MODEL_NAME \
+                                               --max_seq_length 256 \
+                                               --fold 30 \
+                                               --label_num 2 \
+                                               --metric map \
+                                               --qid_split_dir $QID_SPLIT_DIR \
+                                               --qid_file $QID_FILE_DIR \
+                                               --do_train \
+                                               --fp16 \
+                                               --do_lower_case \
+                                               --train_batch_size $BATCH \
+                                               --seed 42 \
+                                               --eval_step 50 \
+                                               --save_step 50000 \
+                                               --label_type $LABEL_TYPE \
+                                               --rank_num $TRAIN_RANK_NUM \
+                                               --learning_rate 1e-5 \
+                                               --num_train_epochs 2.0 \
+                                               --random \
+                                               --pos \
+                                               --qpp_methods ISD \
+                                               --data_seed 96\ >../../logs/train/rob/cobert_noattn_100.out 2>&1 &
 
 wait
 echo "finish train cobert!"
