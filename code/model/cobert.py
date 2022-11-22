@@ -50,34 +50,6 @@ class COBERT(torch.nn.Module):
         QT_pooled_output = QT_output.hidden_states[-1][:,0]
         device = QT_input_ids.device
 
-        # QT_attn = QT_pooled_output[top_num:].unsqueeze(1)
-        # ATTN_input = ''
-        # for i in range(top_num):
-        #     attn_start = QT_pooled_output[i:i+1].unsqueeze(0)
-        #     attn_start = attn_start.expand(batch_size-top_num, 1, -1)
-        #     if i==0:
-        #         ATTN_input = torch.cat((attn_start, QT_attn), 1)
-        #     else:
-        #         now = torch.cat((attn_start, QT_attn), 1)
-        #         ATTN_input = torch.cat((ATTN_input, now), 0)
-        # if top_num == 0:
-        #     ATTN_input = QT_pooled_output[top_num:].unsqueeze(1)
-        # ATTN_output = self.ATTN_BERT(inputs_embeds=ATTN_input, output_hidden_states=True,
-        #                              return_dict=True)
-        # ATTN_now = ''
-        # logits_for_soft = QT_logits[:top_num, 1].expand(batch_size-top_num, top_num)
-        # probs = F.softmax(logits_for_soft, dim=-1)
-        # # logger.info(f'size attn:{str(QT_logits[:4, 1].shape)}')
-        # for i in range(top_num):
-        #     if i==0:
-        #         ATTN_now = ATTN_output.hidden_states[-1][:batch_size-top_num, -1]*probs[:,i].unsqueeze(1)
-        #     else:
-        #         now = ATTN_output.hidden_states[-1][(batch_size-top_num)*i:(batch_size-top_num)*(i+1), -1]\
-        #               *probs[:,i].unsqueeze(1)
-        #         ATTN_now = ATTN_now+now
-        # if top_num == 0:
-        #     ATTN_now = ATTN_output.hidden_states[-1][:batch_size-top_num, -1]
-        # ATTN_rep = (ATTN_now + QT_pooled_output[top_num:]) / 2
         QB_input =QT_pooled_output.unsqueeze(0)
         QB_token_type_ids = torch.zeros(batch_size, dtype=torch.long, device=device)
         # if overlap!=0:
